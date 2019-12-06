@@ -10,10 +10,15 @@ package net.htlgrieskirchen.aud2.list;
  * @author fabian
  */
 public class MyList {
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+    public boolean add(String s) {}
+    public void add(int index, String s) {}
+    public String get(int index) {}
+    public boolean remove(String s) {}
+    public String remove(int index) {}
+    public String set(int index, String s) {}
+    public boolean contains(String s) {}
+    public int indexOf(String s) {}
+    public int size() {}
+    public boolean isEmpty() {}
+    
 }
