@@ -14,43 +14,33 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MyListTest {
     @Test 
-    public boolean add(String s) {
+    public void testAddAndGet() {
         
     }
+    
     @Test
-    public void add(int index, String s) {
+    public void testMiddleGet() {
 
     }
     @Test
-    public String get(int index) {
+    public void testAddAndRemove() {
+
+    }
+    
+    @Test
+    public void testAddAndReplace() {
 
     }
     @Test
-    public boolean remove(String s) {
+    public void testAddAndContains() {
 
     }
     @Test
-    public String remove(int index) {
+    public void testAddAndIndexOf() {
 
     }
     @Test
-    public String set(int index, String s) {
-
-    }
-    @Test
-    public boolean contains(String s) {
-
-    }
-    @Test
-    public int indexOf(String s) {
-
-    }
-    @Test
-    public int size() {
-
-    }
-    @Test
-    public boolean isEmpty() {
+    public void testIsEmpty() {
         
     }
     
