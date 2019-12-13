@@ -39,7 +39,7 @@ public class MyListTest {
         jl.remove(0);
         ml.remove(0);
 
-        asserEquals(jl.get(0), ml.get(0));
+        assertEquals(jl.get(0), ml.get(0));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class MyListTest {
         jl.add(listItem2);
         ml.add(listItem2);
 
-        assertEquals(jl.isEmpty(), ml.isEmpty();
+        assertEquals(jl.isEmpty(), ml.isEmpty());
     }
 
 }
