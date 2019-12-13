@@ -16,9 +16,10 @@ public class MyLinkedList<T> {
     }
     
     private Node<T> getLastNode() {
+        if(firstNode == null) throw new IndexOutOfBoundsException();
         Node<T> lastFound = firstNode;
-        while(firstNode.getNext() != null) {
-            lastFound = firstNode.getNext();
+        while(lastFound.getNext() != null) {
+            lastFound = lastFound.getNext();
         }
         return lastFound;
     }
@@ -50,21 +51,26 @@ public class MyLinkedList<T> {
     public boolean remove(T element) {
         int index = indexOf(element);
         if(index == -1) return false;
-        Node<T> nodeBefore = getNthNode(index-1);
-        nodeBefore.setNext(nodeBefore.getNext().getNext());
+        remove(index);
         return true;
     }
 
     public T remove(int index) {
-        throw new RuntimeException();
+        Node<T> nodeBefore = getNthNode(index-1);
+        T element = nodeBefore.getElement();
+        nodeBefore.setNext(nodeBefore.getNext().getNext());
+        return element;
     }
 
     public T set(int index, T element) {
-        throw new RuntimeException();
+        Node<T> node = getNthNode(index);
+        T old = node.getElement();
+        node.setElement(element);
+        return old;
     }
 
     public boolean contains(T element) {
-        throw new RuntimeException();
+        return indexOf(element) != -1;
     }
 
     public int indexOf(T element) {
@@ -79,10 +85,16 @@ public class MyLinkedList<T> {
     }
 
     public int size() {
-        throw new RuntimeException();
+        int i = 0;
+        Node<T> lastFound = firstNode;
+        while(lastFound.getNext() != null) {
+            lastFound = lastFound.getNext();
+            i++;
+        }
+        return i;
     }
 
     public boolean isEmpty() {
-        throw new RuntimeException();
+        return firstNode == null;
     }
 }
