@@ -4,12 +4,11 @@
  * and open the template in the editor. Brigitte.
  */
 package net.htlgrieskirchen.aud2.list;
-import net.htlgrieskirchen.aud2.list.*;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
