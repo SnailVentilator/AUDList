@@ -9,16 +9,15 @@ package net.htlgrieskirchen.aud2.list;
  *
  * @author fabian
  */
-public class MyList {
-    public boolean add(String s) {}
-    public void add(int index, String s) {}
-    public String get(int index) {}
-    public boolean remove(String s) {}
-    public String remove(int index) {}
-    public String set(int index, String s) {}
-    public boolean contains(String s) {}
-    public int indexOf(String s) {}
-    public int size() {}
-    public boolean isEmpty() {}
-    
+public class MyList<T> {
+    public boolean add(T element) {return false;}
+    public void add(int index, T element) {}
+    public String get(int index) {return null;}
+    public boolean remove(T element) {return false;}
+    public String remove(int index) {return null;}
+    public String set(int index, T element) {return null;}
+    public boolean contains(T element) {return false;}
+    public int indexOf(T element) {return 0;}
+    public int size() {return 0;}
+    public boolean isEmpty() {return false;}
 }
