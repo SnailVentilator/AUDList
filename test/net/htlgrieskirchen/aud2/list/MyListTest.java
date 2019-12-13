@@ -98,4 +98,23 @@ public class MyListTest {
         assertEquals(jl.isEmpty(), ml.isEmpty());
     }
 
+    @Test
+    public void testContainEmpty() {
+        List<String> jl = new ArrayList<>();
+        MyList<String> ml = new MyList<>();
+        String listItem1 = "test1";
+
+        assertEquals(jl.contains(listItem1), ml.contains(listItem1));
+
+    }
+
+    @Test
+    public void testAddNull() {
+        List<String> jl = new ArrayList<>();
+        MyList<String> ml = new MyList<>();
+        jl.add(null);
+        ml.add(null);
+
+        assertEquals(jl.get(0), ml.get(0));
+    }
 }
