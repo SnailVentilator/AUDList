@@ -131,11 +131,15 @@ public class MyListTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testEmptyListGet() {
-        List<String> jl = new ArrayList<>();
+    public void testEmptyListGetMyList() {
         MyList<String> ml = new MyList<>();
-        jl.get(0);
         ml.get(0);
-        //TODO: Split into two methods
+    
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testEmptyListGetJava() {
+         List<String> jl = new ArrayList<>();
+         jl.get(0);
     }
 }
