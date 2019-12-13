@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor. Brigitte.
+ * and open the template in the editor. Birgit.
  */
 package net.htlgrieskirchen.aud2.list;
 
@@ -12,11 +12,10 @@ import org.junit.Test;
 
 /**
  *
- * @author andy
+ * @author Andy
  */
-//TODO implement before and after fix last two tests with -1
-
 public class MyListTest {
+    //TODO: Implement before and after and fix the last two tests(with -1)
     @Before
     public void before() {
 
