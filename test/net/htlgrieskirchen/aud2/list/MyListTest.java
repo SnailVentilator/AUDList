@@ -117,4 +117,15 @@ public class MyListTest {
 
         assertEquals(jl.get(0), ml.get(0));
     }
+
+    @Test
+    public void testEmptyListGet() {
+        List<String> jl = new ArrayList<>();
+        MyList<String> ml = new MyList<>();
+
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            jl.get(0);
+            ml.get(0);
+        });
+    }
 }
