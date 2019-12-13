@@ -26,6 +26,18 @@ public class MyListTest {
     }
 
     @Test
+    public void testAddAtIndex() {
+        List<String> jl = new ArrayList<>();
+        MyList<String> ml = new MyList<>();
+        String listItem1 = "test1";
+        String listItem2 = "test2";
+        jl.add(listItem1);
+        ml.add(listItem1);
+        jl.add(listItem2);
+        ml.add(listItem2);
+    }
+
+    @Test
     public void testAddAndRemove() {
         List<String> jl = new ArrayList<>();
         MyList<String> ml = new MyList<>();
@@ -97,7 +109,7 @@ public class MyListTest {
 
         assertEquals(jl.isEmpty(), ml.isEmpty());
     }
-
+    //Borderline Cases!
     @Test
     public void testContainEmpty() {
         List<String> jl = new ArrayList<>();
