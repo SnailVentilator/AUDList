@@ -12,9 +12,19 @@ import org.junit.Test;
 
 /**
  *
- * @author fabian
+ * @author andy
  */
+//TODO implement before and after fix last two tests with -1
+
 public class MyListTest {
+    @Before
+    public void before() {
+
+    }
+    @After
+    public void after() {
+
+    }
     @Test
     public void testAddAndGet() {
         List<String> jl = new ArrayList<>();
@@ -142,13 +152,14 @@ public class MyListTest {
          jl.get(0);
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testIndexOfEmptyMyList() {
         MyList<String> ml = new MyList<>();
+
         ml.indexOf("test");
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test
     public void testIndexOfEmptyJava() {
         List<String> jl = new ArrayList<>();
         jl.indexOf("test");
