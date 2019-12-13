@@ -134,12 +134,23 @@ public class MyListTest {
     public void testEmptyListGetMyList() {
         MyList<String> ml = new MyList<>();
         ml.get(0);
-    
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyListGetJava() {
          List<String> jl = new ArrayList<>();
          jl.get(0);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testIndexOfEmptyMyList() {
+        MyList<String> ml = new MyList<>();
+        ml.indexOf("test");
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testIndexOfEmptyJava() {
+        List<String> jl = new ArrayList<>();
+        jl.indexOf("test");
     }
 }
