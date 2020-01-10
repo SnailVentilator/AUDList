@@ -1,86 +1,80 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor. Birgit.
+ * and open the template in the editor.
  */
 package net.htlgrieskirchen.aud2.list;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.After;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  *
- * @author Andy
+ * @author aaigner18
  */
-public class MyListTest {
+public class MyLinkedListTest {
     List<String> jl;
-    MyList<String> ml;
+    MyLinkedList<String> mll;
     @Before
     public void before() {
         jl = new ArrayList<>();
-        ml = new MyList<>();
+        mll = new MyLinkedList<>();
         String listItem1 = "test1";
         String listItem2 = "test2";
         jl.add(listItem1);
-        ml.add(listItem1);
+        mll.add(listItem1);
         jl.add(listItem2);
-        ml.add(listItem2);
+        mll.add(listItem2);
     }
-
-    @After
-    public void after() {
-        
-    }
-
+    
     @Test
     public void testGet() {
-        assertEquals(jl.get(0), ml.get(0));
+        assertEquals(jl.get(0), mll.get(0));
     }
 
 
     @Test
     public void testRemove() {
         jl.remove(0);
-        ml.remove(0);
-        assertEquals(jl.get(0), ml.get(0));
+        mll.remove(0);
+        assertEquals(jl.get(0), mll.get(0));
     }
 
     @Test
     public void testReplace() {
         String replacement = "replaced";
         jl.set(0, replacement);
-        ml.set(0, replacement);
-        assertEquals(jl.get(0), ml.get(0));
+        mll.set(0, replacement);
+        assertEquals(jl.get(0), mll.get(0));
     }
 
     @Test
     public void testContains() {
         String listItem1 = "test1";
         String listItem2 = "test2";
-        assertEquals(jl.contains(listItem2), ml.contains(listItem2));
+        assertEquals(jl.contains(listItem2), mll.contains(listItem2));
     }
 
     @Test
     public void testIndexOf() {
         String listItem1 = "test1";
         String listItem2 = "test2";
-        assertEquals(jl.indexOf(listItem2), ml.indexOf(listItem2));
+        assertEquals(jl.indexOf(listItem2), mll.indexOf(listItem2));
     }
 
     @Test
     public void testIsEmpty() {
-        assertEquals(jl.isEmpty(), ml.isEmpty());
+        assertEquals(jl.isEmpty(), mll.isEmpty());
     }
 
     //Borderline Cases!
     @Test
     public void testContainEmpty() {
         List<String> j1 = new ArrayList<>();
-        MyList<String> m1 = new MyList<>();
+        MyLinkedList<String> m1 = new MyLinkedList<>();
         String listItem1 = "test1";
 
         assertEquals(j1.contains(listItem1), m1.contains(listItem1));
@@ -90,7 +84,7 @@ public class MyListTest {
     @Test
     public void testAddNull() {
         List<String> j1 = new ArrayList<>();
-        MyList<String> m1 = new MyList<>();
+        MyLinkedList<String> m1 = new MyLinkedList<>();
         j1.add(null);
         m1.add(null);
 
@@ -98,8 +92,8 @@ public class MyListTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testEmptyListGetMyList() {
-        MyList<String> m1 = new MyList<>();
+    public void testEmptyListGetMyLinkedList() {
+        MyLinkedList<String> m1 = new MyLinkedList<>();
         m1.get(0);
     }
 
@@ -110,8 +104,8 @@ public class MyListTest {
     }
 
     @Test
-    public void testIndexOfEmptyMyList() {
-        MyList<String> m1 = new MyList<>();
+    public void testIndexOfEmptyMyLinkedList() {
+        MyLinkedList<String> m1 = new MyLinkedList<>();
         assertEquals(-1, m1.indexOf("test"));
     }
 
