@@ -8,6 +8,7 @@ package net.htlgrieskirchen.aud2.list;
 /**
  *
  * @author fabian
+ * @param <T>
  */
 public class MyLinkedList<T> {
     private Node<T> firstNode;

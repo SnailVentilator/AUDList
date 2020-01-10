@@ -7,7 +7,9 @@ package net.htlgrieskirchen.aud2.list;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.After;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -18,7 +20,7 @@ public class MyListTest {
     //TODO: Implement before and after and fix the last two tests(with -1)
     @Before
     public void before() {
-
+        
     }
     @After
     public void after() {
