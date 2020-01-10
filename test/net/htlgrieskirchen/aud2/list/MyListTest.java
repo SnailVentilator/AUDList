@@ -17,11 +17,11 @@ import org.junit.Test;
  * @author Andy
  */
 public class MyListTest {
-
+    List<String> jl;
     //TODO: Implement before and after and fix the last two tests(with -1)
     @Before
     public void before() {
-
+       jl = new ArrayList<>();
     }
 
     @After
