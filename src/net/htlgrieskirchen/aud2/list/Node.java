@@ -10,9 +10,10 @@ package net.htlgrieskirchen.aud2.list;
  * @author fabian
  */
 public class Node<T> {
+
     private Node<T> next;
     private T element;
-    
+
     public Node(T element) {
         this.element = element;
     }
@@ -21,11 +22,11 @@ public class Node<T> {
         this.next = next;
         this.element = element;
     }
-    
+
     public T getElement() {
         return element;
     }
-    
+
     public T setElement(T element) {
         T old = element;
         this.element = element;

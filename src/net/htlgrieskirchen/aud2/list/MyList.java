@@ -10,40 +10,45 @@ package net.htlgrieskirchen.aud2.list;
  * @author fabian
  */
 public class MyList<T> {
+
     private static final int INITIAL_SIZE = 10;
     private Object[] array;
     private int size;
-    
+
     public <T> MyList() {
         this(INITIAL_SIZE);
     }
-    
+
     private void ensureCapacity(int capacity) {
-        if(array.length >= capacity) return;
-        Object[] newArray = new Object[array.length*2];
+        if (array.length >= capacity) {
+            return;
+        }
+        Object[] newArray = new Object[array.length * 2];
         System.arraycopy(array, 0, newArray, 0, array.length);
         array = newArray;
     }
-    
+
     private void checkBounds(int index) {
-        if(index >= 0 && index < size) return;
+        if (index >= 0 && index < size) {
+            return;
+        }
         throw new IndexOutOfBoundsException();
     }
-    
+
     public <T> MyList(int initialSize) {
         array = new Object[initialSize];
     }
-    
+
     public boolean add(T element) {
-        ensureCapacity(size+1);
+        ensureCapacity(size + 1);
         array[size] = element;
         size++;
         return true;
     }
 
     public void add(int index, T element) {
-        ensureCapacity(size+1);
-        System.arraycopy(array, index, array, index+1, size-index);
+        ensureCapacity(size + 1);
+        System.arraycopy(array, index, array, index + 1, size - index);
         size++;
         array[index] = element;
     }
@@ -55,18 +60,20 @@ public class MyList<T> {
 
     public boolean remove(T element) {
         int index = indexOf(element);
-        if(index == -1) return false;
+        if (index == -1) {
+            return false;
+        }
         remove(index);
         return true;
     }
 
     public T remove(int index) {
-        System.arraycopy(array, index+1, array, index, size-index);
+        System.arraycopy(array, index + 1, array, index, size - index);
         return null;
     }
 
     public T set(int index, T element) {
-        ensureCapacity(index+1);
+        ensureCapacity(index + 1);
         T old = (T) array[index];
         array[index] = element;
         return old;
@@ -74,15 +81,19 @@ public class MyList<T> {
 
     public boolean contains(T element) {
         for (Object object : array) {
-            if(object == element) return true;
+            if (object == element) {
+                return true;
+            }
         }
         return false;
     }
 
     public int indexOf(T element) {
         for (int i = 0; i < array.length; i++) {
-            T currentElement = (T)array[i];
-            if(currentElement == element) return i;
+            T currentElement = (T) array[i];
+            if (currentElement == element) {
+                return i;
+            }
         }
         return -1;
     }

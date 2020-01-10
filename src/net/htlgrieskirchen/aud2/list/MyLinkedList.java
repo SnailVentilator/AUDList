@@ -11,29 +11,34 @@ package net.htlgrieskirchen.aud2.list;
  * @param <T>
  */
 public class MyLinkedList<T> {
+
     private Node<T> firstNode;
 
     public <T> MyLinkedList() {
     }
-    
+
     private Node<T> getLastNode() {
-        if(firstNode == null) throw new IndexOutOfBoundsException();
+        if (firstNode == null) {
+            throw new IndexOutOfBoundsException();
+        }
         Node<T> lastFound = firstNode;
-        while(lastFound.getNext() != null) {
+        while (lastFound.getNext() != null) {
             lastFound = lastFound.getNext();
         }
         return lastFound;
     }
-    
+
     private Node<T> getNthNode(int n) {
         Node<T> lastFound = firstNode;
         for (int i = 0; i < n; i++) {
-            if(lastFound == null) throw new IndexOutOfBoundsException();
+            if (lastFound == null) {
+                throw new IndexOutOfBoundsException();
+            }
             lastFound = lastFound.getNext();
         }
         return lastFound;
     }
-    
+
     public boolean add(T element) {
         getLastNode().setNext(new Node<>(element));
         return true;
@@ -51,13 +56,15 @@ public class MyLinkedList<T> {
 
     public boolean remove(T element) {
         int index = indexOf(element);
-        if(index == -1) return false;
+        if (index == -1) {
+            return false;
+        }
         remove(index);
         return true;
     }
 
     public T remove(int index) {
-        Node<T> nodeBefore = getNthNode(index-1);
+        Node<T> nodeBefore = getNthNode(index - 1);
         T element = nodeBefore.getElement();
         nodeBefore.setNext(nodeBefore.getNext().getNext());
         return element;
@@ -77,8 +84,10 @@ public class MyLinkedList<T> {
     public int indexOf(T element) {
         int i = 0;
         Node<T> lastFound = firstNode;
-        while(lastFound.getNext() != null) {
-            if(lastFound.getElement() == element) return i;
+        while (lastFound.getNext() != null) {
+            if (lastFound.getElement() == element) {
+                return i;
+            }
             lastFound = lastFound.getNext();
             i++;
         }
@@ -88,7 +97,7 @@ public class MyLinkedList<T> {
     public int size() {
         int i = 0;
         Node<T> lastFound = firstNode;
-        while(lastFound.getNext() != null) {
+        while (lastFound.getNext() != null) {
             lastFound = lastFound.getNext();
             i++;
         }

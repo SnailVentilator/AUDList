@@ -17,15 +17,18 @@ import org.junit.Test;
  * @author Andy
  */
 public class MyListTest {
+
     //TODO: Implement before and after and fix the last two tests(with -1)
     @Before
     public void before() {
-        
+
     }
+
     @After
     public void after() {
 
     }
+
     @Test
     public void testAddAndGet() {
         List<String> jl = new ArrayList<>();
@@ -81,6 +84,7 @@ public class MyListTest {
 
         assertEquals(jl.get(0), ml.get(0));
     }
+
     @Test
     public void testAddAndContains() {
         List<String> jl = new ArrayList<>();
@@ -94,6 +98,7 @@ public class MyListTest {
 
         assertEquals(jl.contains(listItem2), ml.contains(listItem2));
     }
+
     @Test
     public void testAddAndIndexOf() {
         List<String> jl = new ArrayList<>();
@@ -107,6 +112,7 @@ public class MyListTest {
 
         assertEquals(jl.indexOf(listItem2), ml.indexOf(listItem2));
     }
+
     @Test
     public void testIsEmpty() {
         List<String> jl = new ArrayList<>();
@@ -120,6 +126,7 @@ public class MyListTest {
 
         assertEquals(jl.isEmpty(), ml.isEmpty());
     }
+
     //Borderline Cases!
     @Test
     public void testContainEmpty() {
@@ -149,8 +156,8 @@ public class MyListTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyListGetJava() {
-         List<String> jl = new ArrayList<>();
-         jl.get(0);
+        List<String> jl = new ArrayList<>();
+        jl.get(0);
     }
 
     @Test
