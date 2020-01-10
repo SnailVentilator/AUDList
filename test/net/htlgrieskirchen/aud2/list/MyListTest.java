@@ -18,91 +18,54 @@ import org.junit.Test;
  */
 public class MyListTest {
     List<String> jl;
-    //TODO: Implement before and after and fix the last two tests(with -1)
+    MyList<String> ml;
     @Before
     public void before() {
-       jl = new ArrayList<>();
+        jl = new ArrayList<>();
+        ml = new MyList<>();
+        String listItem1 = "test1";
+        String listItem2 = "test2";
+        jl.add(listItem1);
+        ml.add(listItem1);
+        jl.add(listItem2);
+        ml.add(listItem2);
     }
 
     @After
     public void after() {
-
+        
     }
 
     @Test
-    public void testAddAndGet() {
-        List<String> jl = new ArrayList<>();
-        MyList<String> ml = new MyList<>();
-        String listItem = "test";
-        jl.add(listItem);
-        ml.add(listItem);
+    public void testGet() {
         assertEquals(jl.get(0), ml.get(0));
     }
 
-    @Test
-    public void testAddAtIndex() {
-        List<String> jl = new ArrayList<>();
-        MyList<String> ml = new MyList<>();
-        String listItem1 = "test1";
-        String listItem2 = "test2";
-        jl.add(listItem1);
-        ml.add(listItem1);
-        jl.add(listItem2);
-        ml.add(listItem2);
-    }
 
     @Test
-    public void testAddAndRemove() {
-        List<String> jl = new ArrayList<>();
-        MyList<String> ml = new MyList<>();
-        String listItem1 = "test1";
-        String listItem2 = "test2";
-        jl.add(listItem1);
-        ml.add(listItem1);
-        jl.add(listItem2);
-        ml.add(listItem2);
+    public void testRemove() {
         jl.remove(0);
         ml.remove(0);
-
         assertEquals(jl.get(0), ml.get(0));
     }
 
     @Test
-    public void testAddAndReplace() {
-        List<String> jl = new ArrayList<>();
-        MyList<String> ml = new MyList<>();
-        String listItem1 = "test1";
-        String listItem2 = "test2";
+    public void testReplace() {
         String replacement = "replaced";
-        jl.add(listItem1);
-        ml.add(listItem1);
-        jl.add(listItem2);
-        ml.add(listItem2);
-
         jl.set(0, replacement);
         ml.set(0, replacement);
-
         assertEquals(jl.get(0), ml.get(0));
     }
 
     @Test
-    public void testAddAndContains() {
-        List<String> jl = new ArrayList<>();
-        MyList<String> ml = new MyList<>();
+    public void testContains() {
         String listItem1 = "test1";
         String listItem2 = "test2";
-        jl.add(listItem1);
-        ml.add(listItem1);
-        jl.add(listItem2);
-        ml.add(listItem2);
-
         assertEquals(jl.contains(listItem2), ml.contains(listItem2));
     }
 
     @Test
-    public void testAddAndIndexOf() {
-        List<String> jl = new ArrayList<>();
-        MyList<String> ml = new MyList<>();
+    public void testIndexOf() {
         String listItem1 = "test1";
         String listItem2 = "test2";
         jl.add(listItem1);
@@ -140,36 +103,35 @@ public class MyListTest {
 
     @Test
     public void testAddNull() {
-        List<String> jl = new ArrayList<>();
-        MyList<String> ml = new MyList<>();
-        jl.add(null);
-        ml.add(null);
+        List<String> j1 = new ArrayList<>();
+        MyList<String> m1 = new MyList<>();
+        j1.add(null);
+        m1.add(null);
 
-        assertEquals(jl.get(0), ml.get(0));
+        assertEquals(j1.get(0), m1.get(0));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyListGetMyList() {
-        MyList<String> ml = new MyList<>();
-        ml.get(0);
+        MyList<String> m1 = new MyList<>();
+        m1.get(0);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyListGetJava() {
-        List<String> jl = new ArrayList<>();
-        jl.get(0);
+        List<String> j1 = new ArrayList<>();
+        j1.get(0);
     }
 
     @Test
     public void testIndexOfEmptyMyList() {
-        MyList<String> ml = new MyList<>();
-
-        ml.indexOf("test");
+        MyList<String> m1 = new MyList<>();
+        assertEquals(-1, m1.indexOf("test"));
     }
 
     @Test
     public void testIndexOfEmptyJava() {
-        List<String> jl = new ArrayList<>();
-        jl.indexOf("test");
+        List<String> j1 = new ArrayList<>();
+        assertEquals(-1,j1.indexOf("test"));
     }
 }
