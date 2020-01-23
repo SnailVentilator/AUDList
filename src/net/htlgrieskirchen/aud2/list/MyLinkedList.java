@@ -5,6 +5,8 @@
  */
 package net.htlgrieskirchen.aud2.list;
 
+//TODO: optimize performance: replace getNthNode(indexOf(x)) with more efficient version
+
 /**
  *
  * @author fabian
@@ -67,6 +69,7 @@ public class MyLinkedList<T> {
             lastNode = lastNode.getNext();
             index++;
         }
+        assert lastNode != null; //Shut up, Netbeans
         return lastNode.getValue().equals(s) ? index : -1;
     }
     
@@ -94,8 +97,26 @@ public class MyLinkedList<T> {
         return oldValue;
     }
     
-    public void add(int index, T s) {}
-    public boolean remove(T s) {return false;}
-    public int size() {return 0;}
-    public boolean isEmpty() {return false;}
+    public void add(int index, T s) {
+        Node<T> nthNode = getNthNode(index);
+        nthNode.setNext(new Node(nthNode.getNext(), s));
+    }
+    
+    public boolean remove(T s) {
+        int indexOf = indexOf(s);
+        if(indexOf == -1) return false;
+        
+        Node<T> nthNode = getNthNode(indexOf - 1);
+        nthNode.setNext(nthNode.getNext().getNext());
+        return true;
+    }
+    
+    public int size() {
+        //TODO: make more efficient
+        return indexOf(getLastNode().getValue());
+    }
+    
+    public boolean isEmpty() {
+        return firstNode == null;
+    }
 }
