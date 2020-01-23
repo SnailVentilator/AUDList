@@ -6,7 +6,6 @@
 package net.htlgrieskirchen.aud2.list;
 
 import java.util.LinkedList;
-import java.util.LinkedList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -45,11 +44,17 @@ public class MyLinkedListTest {
     }
 
     @Test
-    public void testReplace() { //TODO: Rename to testSet because that's what it is
-        String replacement = "replaced";
-        jll.set(0, replacement);
-        mll.set(0, replacement);
+    public void testSet() { 
+        String temp = "replaced";
+        jll.set(0, temp);
+        mll.set(0, temp);
         assertEquals(jll.get(0), mll.get(0));
+    }
+    
+    @Test
+    public void testSetBefore() { 
+        String temp = "replaced";
+        assertEquals(jll.set(1, temp), mll.set(1, temp));
     }
 
     @Test
