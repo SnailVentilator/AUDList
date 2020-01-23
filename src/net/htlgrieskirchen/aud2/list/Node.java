@@ -9,27 +9,27 @@ package net.htlgrieskirchen.aud2.list;
  *
  * @author fabian
  */
-public class Node<T> {
+class Node<T> {
 
     private Node<T> next;
-    private T element;
+    private T value;
 
-    public Node(T element) {
-        this.element = element;
+    public Node(T value) {
+        this.value = value;
     }
 
     public Node(Node<T> next, T element) {
         this.next = next;
-        this.element = element;
+        this.value = element;
     }
 
-    public T getElement() {
-        return element;
+    public T getValue() {
+        return value;
     }
 
-    public T setElement(T element) {
+    public T setValue(T element) {
         T old = element;
-        this.element = element;
+        this.value = element;
         return old;
     }
 

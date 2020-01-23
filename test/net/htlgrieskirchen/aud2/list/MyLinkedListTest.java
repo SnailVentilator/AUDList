@@ -45,7 +45,7 @@ public class MyLinkedListTest {
     }
 
     @Test
-    public void testReplace() {
+    public void testReplace() { //TODO: Rename to testSet because that's what it is
         String replacement = "replaced";
         jll.set(0, replacement);
         mll.set(0, replacement);

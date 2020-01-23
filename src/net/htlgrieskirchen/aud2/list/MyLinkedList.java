@@ -15,96 +15,87 @@ public class MyLinkedList<T> {
     private Node<T> firstNode;
 
     public <T> MyLinkedList() {
+        firstNode = null;
     }
-
+    
     private Node<T> getLastNode() {
-        if (firstNode == null) {
-            throw new IndexOutOfBoundsException();
-        }
+        Node<T> lastLastFound = null;
         Node<T> lastFound = firstNode;
-        while (lastFound.getNext() != null) {
+        while (lastFound != null) {
+            lastLastFound = lastFound;
             lastFound = lastFound.getNext();
         }
-        return lastFound;
+        return lastLastFound;
     }
 
     private Node<T> getNthNode(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException();
+        }
+        
         Node<T> lastFound = firstNode;
         for (int i = 0; i < n; i++) {
-            if (lastFound == null) {
-                throw new IndexOutOfBoundsException();
-            }
             lastFound = lastFound.getNext();
+            if(lastFound == null)
+                throw new IndexOutOfBoundsException();
         }
+        
         return lastFound;
     }
-
-    public boolean add(T element) {
-        getLastNode().setNext(new Node<>(element));
+    
+    //--------------------------------------------------------------------------
+    
+    public boolean add(T s) {
+        if(firstNode == null)
+            firstNode = new Node(s);
+        else
+            getLastNode().setNext(new Node(s));
         return true;
     }
-
-    public void add(int index, T element) {
-        Node<T> nthNode = getNthNode(index);
-        Node<T> oldNode = nthNode.getNext();
-        nthNode.setNext(new Node<>(oldNode, element));
-    }
-
     public T get(int index) {
-        return getNthNode(index).getElement();
-    }
-
-    public boolean remove(T element) {
-        int index = indexOf(element);
-        if (index == -1) {
-            return false;
+        try {
+            return getNthNode(index).getValue();
+        } catch(NullPointerException e) {
+            throw new IndexOutOfBoundsException();
         }
-        remove(index);
-        return true;
     }
-
+    public int indexOf(T s) {
+        if(firstNode == null) return -1; //Test case
+        Node<T> lastNode = firstNode;
+        int index = 0;
+        while(lastNode != null && !lastNode.getValue().equals(s)) {
+            lastNode = lastNode.getNext();
+            index++;
+        }
+        return lastNode.getValue().equals(s) ? index : -1;
+    }
+    
     public T remove(int index) {
-        Node<T> nodeBefore = getNthNode(index - 1);
-        T element = nodeBefore.getElement();
-        nodeBefore.setNext(nodeBefore.getNext().getNext());
-        return element;
-    }
-
-    public T set(int index, T element) {
-        Node<T> node = getNthNode(index);
-        T old = node.getElement();
-        node.setElement(element);
-        return old;
-    }
-
-    public boolean contains(T element) {
-        return indexOf(element) != -1;
-    }
-
-    public int indexOf(T element) {
-        int i = 0;
-        Node<T> lastFound = firstNode;
-        while (lastFound.getNext() != null) {
-            if (lastFound.getElement() == element) {
-                return i;
-            }
-            lastFound = lastFound.getNext();
-            i++;
+        if(index == 0) { //TODO: Test case with 0 and non 0
+            T oldValue = firstNode.getValue();
+            firstNode = firstNode.getNext();
+            return oldValue;
+        } else {
+            Node<T> nthNode = getNthNode(index-1);
+            T oldValue = nthNode.getNext().getValue();
+            nthNode.setNext(nthNode.getNext().getNext());
+            return oldValue;
         }
-        return -1;
     }
-
-    public int size() {
-        int i = 0;
-        Node<T> lastFound = firstNode;
-        while (lastFound.getNext() != null) {
-            lastFound = lastFound.getNext();
-            i++;
-        }
-        return i;
+    
+    public boolean contains(T s) {
+        return indexOf(s) != -1;
     }
-
-    public boolean isEmpty() {
-        return firstNode == null;
+    
+    public T set(int index, T s) {
+        Node<T> nthNode = getNthNode(index);
+        T oldValue = nthNode.getValue();
+        nthNode.setValue(s);
+        return oldValue;
     }
+    
+    public void add(int index, T s) {}
+    public boolean remove(T s) {return false;}
+    public int size() {return 0;}
+    public boolean isEmpty() {return false;}
 }
