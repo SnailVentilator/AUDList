@@ -5,9 +5,6 @@
  */
 package net.htlgrieskirchen.aud2.list;
 
-//TODO: optimize performance: replace getNthNode(indexOf(x)) with more efficient version
-//TODO: execute tests
-
 /**
  *
  * @author fabian
@@ -99,7 +96,7 @@ public class MyLinkedList<T> {
     }
     
     public void add(int index, T s) {
-        Node<T> nthNode = getNthNode(index);
+        Node<T> nthNode = getNthNode(index-1);
         nthNode.setNext(new Node(nthNode.getNext(), s));
     }
     
@@ -113,8 +110,14 @@ public class MyLinkedList<T> {
     }
     
     public int size() {
-        //TODO: make more efficient
-        return indexOf(getLastNode().getValue())+1;
+        if(firstNode == null) return 0;
+        Node<T> lastFound = firstNode;
+        int size = 0;
+        while(lastFound != null) {
+            size++;
+            lastFound = lastFound.getNext();
+        }
+        return size;
     }
     
     public boolean isEmpty() {

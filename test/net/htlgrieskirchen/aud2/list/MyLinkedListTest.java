@@ -16,8 +16,10 @@ import org.junit.Test;
  * @author aaigner18
  */
 public class MyLinkedListTest {
+
     List<String> jll;
     MyLinkedList<String> mll;
+
     @Before
     public void before() {
         jll = new LinkedList<>();
@@ -29,29 +31,30 @@ public class MyLinkedListTest {
         jll.add(listItem2);
         mll.add(listItem2);
     }
-    
+
     @Test
     public void testGet() {
         assertEquals(jll.get(0), mll.get(0));
     }
- 
+
     @Test
     public void testAddAtIndex() {
         jll.add(1, "temp");
         mll.add(1, "temp");
         assertEquals(jll.get(1), mll.get(1));
     }
-    
+
     @Test
     public void testIsEmpty() {
         assertEquals(jll.isEmpty(), mll.isEmpty());
     }
-    
-    @Test 
+
+    @Test
     public void testSize() {
         assertEquals(jll.size(), mll.size());
     }
-    @Test 
+
+    @Test
     public void testSizeOfEmpty() {
         jll.remove(0);
         jll.remove(0);
@@ -59,13 +62,14 @@ public class MyLinkedListTest {
         mll.remove(0);
         assertEquals(jll.size(), mll.size());
     }
+
     @Test
     public void testRemoveAtIndex() {
         jll.remove(0);
         mll.remove(0);
         assertEquals(jll.get(0), mll.get(0));
     }
-    
+
     public void testRemove() {
         String listItem1 = "test1";
         jll.remove(listItem1);
@@ -74,15 +78,15 @@ public class MyLinkedListTest {
     }
 
     @Test
-    public void testSet() { 
+    public void testSet() {
         String temp = "replaced";
         jll.set(0, temp);
         mll.set(0, temp);
         assertEquals(jll.get(0), mll.get(0));
     }
-    
+
     @Test
-    public void testSetBefore() { 
+    public void testSetBefore() {
         String temp = "replaced";
         assertEquals(jll.set(1, temp), mll.set(1, temp));
     }
@@ -152,8 +156,9 @@ public class MyLinkedListTest {
     @Test
     public void testIndexOfEmptyJava() {
         List<String> j1 = new LinkedList<>();
-        assertEquals(-1,j1.indexOf("test"));
-    }   
+        assertEquals(-1, j1.indexOf("test"));
+    }
+
     //Borderline cases!
     @Test
     public void testSizeWithDoubleElement() {
