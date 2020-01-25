@@ -59,6 +59,7 @@ public class MyListTest {
 
     @Test
     public void testContains() {
+        //TODO: test with other type than string that implements equals
         String listItem1 = "test1";
         String listItem2 = "test2";
         assertEquals(jl.contains(listItem2), ml.contains(listItem2));
