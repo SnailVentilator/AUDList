@@ -17,8 +17,10 @@ import org.junit.Test;
  * @author Andy
  */
 public class MyListTest {
+
     List<String> jl;
     MyList<String> ml;
+
     @Before
     public void before() {
         jl = new ArrayList<>();
@@ -33,14 +35,13 @@ public class MyListTest {
 
     @After
     public void after() {
-        
+
     }
 
     @Test
     public void testGet() {
         assertEquals(jl.get(0), ml.get(0));
     }
-
 
     @Test
     public void testRemove() {
@@ -119,6 +120,6 @@ public class MyListTest {
     @Test
     public void testIndexOfEmptyJava() {
         List<String> j1 = new ArrayList<>();
-        assertEquals(-1,j1.indexOf("test"));
-    }   
+        assertEquals(-1, j1.indexOf("test"));
+    }
 }
