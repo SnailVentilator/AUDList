@@ -73,7 +73,7 @@ public class MyListTest {
     }
     
     @Test
-    public void testContainsImpelemtEquals() {
+    public void testContainsImplementEquals() {
         List<Custom> l1 = new ArrayList<>();
         MyList<Custom> l2 = new MyList<>();
         Custom listItem1 = new Custom(2, "random");
@@ -86,6 +86,11 @@ public class MyListTest {
         assertEquals(l1.contains(listItem2), l2.contains(listItem2));
     }
 
+    @Test
+    public void testRemoveElement() {
+        assertEquals(jl.remove("test1"), ml.remove("test1"));
+    }
+    
     @Test
     public void testIndexOf() {
         String listItem1 = "test1";
@@ -114,6 +119,7 @@ public class MyListTest {
     public void testRemoveRandomElement() {
         assertEquals(jl.remove("random"), ml.remove("random"));
     }
+    
     
     @Test
     public void testAddNull() {

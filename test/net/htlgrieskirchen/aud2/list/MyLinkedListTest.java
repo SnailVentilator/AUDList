@@ -65,7 +65,7 @@ public class MyLinkedListTest {
     }
     
     @Test
-    public void testContainsImpelemtEquals() {
+    public void testContainsImplementEquals() {
         List<Custom> l1 = new LinkedList<>();
         MyLinkedList<Custom> l2 = new MyLinkedList<>();
         Custom listItem1 = new Custom(2, "random");
@@ -130,6 +130,11 @@ public class MyLinkedListTest {
         assertEquals(jll.isEmpty(), mll.isEmpty());
     }
 
+    @Test
+    public void testRemoveElement() {
+        assertEquals(jll.remove("test1"), mll.remove("test1"));
+    }
+    
     //Borderline Cases!
     @Test
     public void testContainEmpty() {
