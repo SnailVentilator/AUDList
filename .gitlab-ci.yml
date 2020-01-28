@@ -1,4 +1,6 @@
-java:
+image: gradle:jdk11
+
+executeTests:
   stage: test
   script:
   - gradle test
