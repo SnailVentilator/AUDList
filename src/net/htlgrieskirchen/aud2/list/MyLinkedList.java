@@ -68,7 +68,7 @@ public class MyLinkedList<T> {
         }
         Node<T> lastNode = firstNode;
         int index = 0;
-        while (lastNode != null && !lastNode.getValue().equals(s)) {
+        while (lastNode.getNext() != null && !lastNode.getValue().equals(s)) {
             lastNode = lastNode.getNext();
             index++;
         }
