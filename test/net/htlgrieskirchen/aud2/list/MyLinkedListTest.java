@@ -68,7 +68,7 @@ public class MyLinkedListTest {
     @Test
     public void testContainsImpelemtEquals() {
         List<Custom> l1 = new ArrayList<>();
-        MyList<Custom> l2 = new MyList<>();
+        MyLinkedList<Custom> l2 = new MyLinkedList<>();
         Custom listItem1 = new Custom(187, "Brigitte");
         Custom listItem2 = new Custom(187, "Brigitte");
         l1.add(listItem1);
