@@ -5,33 +5,25 @@
  */
 package net.htlgrieskirchen.aud2.list;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.chart.Axis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import sun.swing.BakedArrayList;
 
 /**
  *
@@ -114,8 +106,8 @@ public class BenchmarkFlexer extends Application {
             GridPane pane = new GridPane();
 
             new Thread(() -> {
-                LineChart<Number, Number> chartInsert = generateChart(new Benchmarks.InsertionBenchmark(), 5000, 1000, 0);
-                LineChart<Number, Number> chartContains = generateChart(new Benchmarks.ContainsBenchmark(100 * 100), 100, 100, 1);
+                LineChart<Number, Number> chartInsert = generateChart(new Benchmarks.InsertionBenchmark(), 50000, 100, 0);
+                LineChart<Number, Number> chartContains = generateChart(new Benchmarks.ContainsBenchmark(250 * 100), 250, 100, 1);
                 LineChart<Number, Number> chartRemoveByIndex = generateChart(new Benchmarks.RemoveByIndexBenchmark(), 500, 100, 2);
                 LineChart<Number, Number> chartRemoveByValue = generateChart(new Benchmarks.RemoveByValueBenchmark(), 500, 100, 3);
 
@@ -132,6 +124,23 @@ public class BenchmarkFlexer extends Application {
                     pane.add(chartContains, 1, 0);
                     pane.add(chartRemoveByIndex, 0, 1);
                     pane.add(chartRemoveByValue, 1, 1);
+
+                    Collections.sort(chartInsert.getData(), (o1, o2) -> {
+                        return o1.getName().compareTo(o2.getName());
+                    });
+                    Collections.sort(chartContains.getData(), (o1, o2) -> {
+                        return o1.getName().compareTo(o2.getName());
+                    });
+                    Collections.sort(chartRemoveByIndex.getData(), (o1, o2) -> {
+                        return o1.getName().compareTo(o2.getName());
+                    });
+                    Collections.sort(chartRemoveByValue.getData(), (o1, o2) -> {
+                        return o1.getName().compareTo(o2.getName());
+                    });
+                    
+                    NumberAxis yAxis = (NumberAxis) chartInsert.getYAxis();
+                    yAxis.setAutoRanging(false);
+                    yAxis.setUpperBound(250);
 
                     loadingStage.hide();
                     stage.show();
