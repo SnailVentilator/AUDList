@@ -5,6 +5,8 @@
  */
 package net.htlgrieskirchen.aud2.list;
 
+import java.util.Objects;
+
 /**
  *
  * @author fabian
@@ -81,7 +83,7 @@ public class MyList<T> {
 
     public boolean contains(T element) {
         for (Object object : array) {
-            if (object == element) {
+            if (Objects.equals(object, element)) {
                 return true;
             }
         }
