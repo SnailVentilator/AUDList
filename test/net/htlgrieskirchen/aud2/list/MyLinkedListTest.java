@@ -35,6 +35,7 @@ public class MyLinkedListTest {
     @Test
     public void testGet() {
         assertEquals(jll.get(0), mll.get(0));
+        assertEquals(jll.get(1), mll.get(1));
     }
 
     @Test
@@ -61,6 +62,20 @@ public class MyLinkedListTest {
         mll.remove(0);
         mll.remove(0);
         assertEquals(jll.size(), mll.size());
+    }
+    
+    @Test
+    public void testContainsImpelemtEquals() {
+        List<Custom> l1 = new LinkedList<>();
+        MyLinkedList<Custom> l2 = new MyLinkedList<>();
+        Custom listItem1 = new Custom(2, "random");
+        Custom listItem2 = new Custom(1, "temp");
+        l1.add(listItem1);
+        l1.add(listItem2);
+        l2.add(listItem1);
+        l2.add(listItem2);
+        assertEquals(l1.contains(listItem1), l2.contains(listItem1));
+        assertEquals(l1.contains(listItem2), l2.contains(listItem2));
     }
 
     @Test
@@ -106,7 +121,8 @@ public class MyLinkedListTest {
     }
 
     @Test
-    public void testIsEmptyOnEmpty() {
+    public void testIsEmptyOnEmptyAndSize() {
+        assertEquals(jll.size(), mll.size());
         jll.remove(0);
         jll.remove(0);
         mll.remove(0);
@@ -125,6 +141,11 @@ public class MyLinkedListTest {
 
     }
 
+    @Test
+    public void testRemoveRandomElement() {
+        assertEquals(jll.remove("random"), mll.remove("random"));
+    }
+    
     @Test
     public void testAddNull() {
         List<String> j1 = new LinkedList<>();
