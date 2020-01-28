@@ -42,14 +42,14 @@ public class MyListTest {
         ml.add(1, "temp");
         assertEquals(jl.get(1), ml.get(1));
     }
-    
+
     @Test
     public void testGet() {
         assertEquals(jl.get(0), ml.get(0));
         assertEquals(jl.get(1), ml.get(1));
     }
 
-    
+
     @Test
     public void testRemoveIndex() {
         jl.remove(0);
@@ -71,18 +71,15 @@ public class MyListTest {
         String listItem2 = "test2";
         assertEquals(jl.contains(listItem2), ml.contains(listItem2));
     }
-    
+
     @Test
     public void testContainsImplementEquals() {
         List<Custom> l1 = new ArrayList<>();
         MyList<Custom> l2 = new MyList<>();
-        Custom listItem1 = new Custom(2, "random");
-        Custom listItem2 = new Custom(1, "temp");
+        Custom listItem1 = new Custom(187, "Brigitte");
+        Custom listItem2 = new Custom(187, "Brigitte");
         l1.add(listItem1);
-        l1.add(listItem2);
         l2.add(listItem1);
-        l2.add(listItem2);
-        assertEquals(l1.contains(listItem1), l2.contains(listItem1));
         assertEquals(l1.contains(listItem2), l2.contains(listItem2));
     }
 
@@ -120,7 +117,7 @@ public class MyListTest {
         assertEquals(jl.remove("random"), ml.remove("random"));
     }
     
-    
+
     @Test
     public void testAddNull() {
         List<String> j1 = new ArrayList<>();
