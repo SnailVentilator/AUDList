@@ -26,6 +26,11 @@ sourceSets {
             srcDirs = ["src"]
         }
     }
+    test {
+        java {
+            srcDirs = ["test"]
+        }
+    }
 }
 
 repositories {
@@ -40,4 +45,8 @@ dependencies {
 application {
     // Define the main class for the application
     mainClassName = 'net.htlgrieskirchen.aud2.list.Main'
+}
+
+test {
+    useJUnit()
 }
