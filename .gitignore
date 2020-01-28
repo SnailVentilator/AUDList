@@ -1,3 +1,9 @@
-./nbproject
-/build/
-/dist/
+.idea
+coverage
+out
+.gradle
+build
+nbproject
+dist
+audList.iml
+gradle.properties
