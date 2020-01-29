@@ -3,7 +3,7 @@ image: gradle:jdk11
 executeTests:
   stage: test
   script:
-  - gradle test
+    - gradle test
   artifacts:
     reports:
       junit: ./build/test-results/test/TEST-*.xml
