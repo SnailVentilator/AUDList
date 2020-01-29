@@ -24,14 +24,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //BenchmarkFlexer.flex();
-        //System.exit(0);
+//        BenchmarkFlexer.flex();
+//        System.exit(0);
 
         Timer timer;
         ArrayList<String> arrayList = new ArrayList<>();
-        MyList<String> myList = new MyList<>();
+        MyList<String> myList = new MyList();
         LinkedList<String> linkedList = new LinkedList<>();
-        MyLinkedList<String> myLinkedList = new MyLinkedList<>();
+        MyLinkedList<String> myLinkedList = new MyLinkedList();
 
         String[] testStrings = new String[100000];
         for (int i = 0; i < testStrings.length; i++) {

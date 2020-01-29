@@ -17,7 +17,7 @@ public class MyList<T> {
     private Object[] array;
     private int size;
 
-    public <T> MyList() {
+    public MyList() {
         this(INITIAL_SIZE);
     }
 
@@ -37,7 +37,7 @@ public class MyList<T> {
         throw new IndexOutOfBoundsException();
     }
 
-    public <T> MyList(int initialSize) {
+    public MyList(int initialSize) {
         array = new Object[initialSize];
     }
 

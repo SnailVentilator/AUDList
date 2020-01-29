@@ -18,13 +18,15 @@ import org.junit.Test;
  */
 public class MyLinkedListTest {
 
+    //TODO: Test case with 0 and non 0
+
     List<String> jll;
     MyLinkedList<String> mll;
 
     @Before
     public void before() {
         jll = new LinkedList<>();
-        mll = new MyLinkedList<>();
+        mll = new MyLinkedList();
         String listItem1 = "test1";
         String listItem2 = "test2";
         jll.add(listItem1);
@@ -68,7 +70,7 @@ public class MyLinkedListTest {
     @Test
     public void testContainsImplementEquals() {
         List<Custom> l1 = new ArrayList<>();
-        MyLinkedList<Custom> l2 = new MyLinkedList<>();
+        MyLinkedList<Custom> l2 = new MyLinkedList();
         Custom listItem1 = new Custom(187, "Brigitte");
         Custom listItem2 = new Custom(187, "Brigitte");
         l1.add(listItem1);
@@ -137,7 +139,7 @@ public class MyLinkedListTest {
     @Test
     public void testContainEmpty() {
         List<String> j1 = new LinkedList<>();
-        MyLinkedList<String> m1 = new MyLinkedList<>();
+        MyLinkedList<String> m1 = new MyLinkedList();
         String listItem1 = "test1";
 
         assertEquals(j1.contains(listItem1), m1.contains(listItem1));
@@ -152,7 +154,7 @@ public class MyLinkedListTest {
     @Test
     public void testAddNull() {
         List<String> j1 = new LinkedList<>();
-        MyLinkedList<String> m1 = new MyLinkedList<>();
+        MyLinkedList<String> m1 = new MyLinkedList();
         j1.add(null);
         m1.add(null);
 
@@ -161,7 +163,7 @@ public class MyLinkedListTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyListGetMyLinkedList() {
-        MyLinkedList<String> m1 = new MyLinkedList<>();
+        MyLinkedList<String> m1 = new MyLinkedList();
         m1.get(0);
     }
 
@@ -173,7 +175,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testIndexOfEmptyMyLinkedList() {
-        MyLinkedList<String> m1 = new MyLinkedList<>();
+        MyLinkedList<String> m1 = new MyLinkedList();
         assertEquals(-1, m1.indexOf("test"));
     }
 

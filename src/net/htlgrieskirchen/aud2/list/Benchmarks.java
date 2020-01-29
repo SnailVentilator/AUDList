@@ -6,12 +6,8 @@
 package net.htlgrieskirchen.aud2.list;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
-import net.htlgrieskirchen.aud2.list.BenchmarkFlexer;
-import net.htlgrieskirchen.aud2.list.MyLinkedList;
-import net.htlgrieskirchen.aud2.list.MyList;
 
 /**
  *
@@ -43,7 +39,7 @@ public class Benchmarks {
                     }
                     return t1.getTime();
                 case MyArrayList:
-                    myArrayList = new MyList<>();
+                    myArrayList = new MyList();
                     Timer t2 = new Timer();
                     for (int i = 0; i < size; i++) {
                         myArrayList.add(randomValues[i]);
@@ -57,7 +53,7 @@ public class Benchmarks {
                     }
                     return t3.getTime();
                 case MyLinkedList:
-                    myLinkedList = new MyLinkedList<>();
+                    myLinkedList = new MyLinkedList();
                     Timer t4 = new Timer();
                     for (int i = 0; i < size; i++) {
                         myLinkedList.add(randomValues[i]);
@@ -89,9 +85,9 @@ public class Benchmarks {
         }
 
         private ArrayList<String> javaArrayList = new ArrayList<>();
-        private MyList<String> myArrayList = new MyList<>();
+        private MyList<String> myArrayList = new MyList();
         private LinkedList<String> javaLinkedList = new LinkedList<>();
-        private MyLinkedList<String> myLinkedList = new MyLinkedList<>();
+        private MyLinkedList<String> myLinkedList = new MyLinkedList();
 
         @Override
         public long execute(BenchmarkFlexer.ListType type, long size) {
@@ -135,9 +131,9 @@ public class Benchmarks {
     public static class RemoveByIndexBenchmark implements BenchmarkFlexer.Benchmarkable {
 
         private ArrayList<String> javaArrayList = new ArrayList<>();
-        private MyList<String> myArrayList = new MyList<>();
+        private MyList<String> myArrayList = new MyList();
         private LinkedList<String> javaLinkedList = new LinkedList<>();
-        private MyLinkedList<String> myLinkedList = new MyLinkedList<>();
+        private MyLinkedList<String> myLinkedList = new MyLinkedList();
 
         @Override
         public long execute(BenchmarkFlexer.ListType type, long size) {
@@ -154,7 +150,7 @@ public class Benchmarks {
                     }
                     return t1.getTime();
                 case MyArrayList:
-                    myArrayList = new MyList<>();
+                    myArrayList = new MyList();
                     for (int i = 0; i < size + 1; i++) {
                         myArrayList.add(randomValues[i]);
                     }
@@ -174,7 +170,7 @@ public class Benchmarks {
                     }
                     return t3.getTime();
                 case MyLinkedList:
-                    myLinkedList = new MyLinkedList<>();
+                    myLinkedList = new MyLinkedList();
                     for (int i = 0; i < size + 1; i++) {
                         myLinkedList.add(randomValues[i]);
                     }
@@ -198,9 +194,9 @@ public class Benchmarks {
     public static class RemoveByValueBenchmark implements BenchmarkFlexer.Benchmarkable {
 
         private ArrayList<String> javaArrayList = new ArrayList<>();
-        private MyList<String> myArrayList = new MyList<>();
+        private MyList<String> myArrayList = new MyList();
         private LinkedList<String> javaLinkedList = new LinkedList<>();
-        private MyLinkedList<String> myLinkedList = new MyLinkedList<>();
+        private MyLinkedList<String> myLinkedList = new MyLinkedList();
 
         @Override
         public long execute(BenchmarkFlexer.ListType type, long size) {
@@ -216,7 +212,7 @@ public class Benchmarks {
                     }
                     return t1.getTime();
                 case MyArrayList:
-                    myArrayList = new MyList<>();
+                    myArrayList = new MyList();
                     for (int i = 0; i < size + 1; i++) {
                         myArrayList.add(randomValues[i]);
                     }
@@ -236,7 +232,7 @@ public class Benchmarks {
                     }
                     return t3.getTime();
                 case MyLinkedList:
-                    myLinkedList = new MyLinkedList<>();
+                    myLinkedList = new MyLinkedList();
                     for (int i = 0; i < size + 1; i++) {
                         myLinkedList.add(randomValues[i]);
                     }

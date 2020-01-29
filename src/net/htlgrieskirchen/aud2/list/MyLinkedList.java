@@ -13,19 +13,15 @@ package net.htlgrieskirchen.aud2.list;
 public class MyLinkedList<T> {
 
     private Node<T> firstNode;
+    private Node<T> lastNode;
 
-    public <T> MyLinkedList() {
+    public MyLinkedList() {
         firstNode = null;
+        lastNode = null;
     }
 
     private Node<T> getLastNode() {
-        Node<T> lastLastFound = null;
-        Node<T> lastFound = firstNode;
-        while (lastFound != null) {
-            lastLastFound = lastFound;
-            lastFound = lastFound.getNext();
-        }
-        return lastLastFound;
+        return lastNode;
     }
 
     private Node<T> getNthNode(int n) {
@@ -47,9 +43,13 @@ public class MyLinkedList<T> {
     //--------------------------------------------------------------------------
     public boolean add(T s) {
         if (firstNode == null) {
-            firstNode = new Node(s);
+            Node<T> newNode = new Node<>(s);
+            this.firstNode = newNode;
+            this.lastNode = newNode;
         } else {
-            getLastNode().setNext(new Node(s));
+            Node<T> newNode = new Node<>(s);
+            getLastNode().setNext(newNode);
+            lastNode = newNode;
         }
         return true;
     }
@@ -66,18 +66,19 @@ public class MyLinkedList<T> {
         if (firstNode == null) {
             return -1; //Test case
         }
-        Node<T> lastNode = firstNode;
+        Node<T> lastFoundNode = firstNode;
         int index = 0;
-        while (lastNode.getNext() != null && !lastNode.getValue().equals(s)) {
-            lastNode = lastNode.getNext();
+        while (lastFoundNode.getNext() != null && !lastFoundNode.getValue().equals(s)) {
+            lastFoundNode = lastFoundNode.getNext();
             index++;
         }
-        assert lastNode != null; //Shut up, Netbeans
-        return lastNode.getValue().equals(s) ? index : -1;
+        assert lastFoundNode != null; //Shut up, Netbeans
+        return lastFoundNode.getValue().equals(s) ? index : -1;
     }
 
     public T remove(int index) {
-        if (index == 0) { //TODO: Test case with 0 and non 0
+        //TODO: handle lastNode
+        if (index == 0) {
             T oldValue = firstNode.getValue();
             firstNode = firstNode.getNext();
             return oldValue;
@@ -102,7 +103,7 @@ public class MyLinkedList<T> {
 
     public void add(int index, T s) {
         Node<T> nthNode = getNthNode(index - 1);
-        nthNode.setNext(new Node(nthNode.getNext(), s));
+        nthNode.setNext(new Node<>(nthNode.getNext(), s));
     }
 
     public boolean remove(T s) {

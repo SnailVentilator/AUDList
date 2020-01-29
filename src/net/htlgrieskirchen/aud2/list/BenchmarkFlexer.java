@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  */
 public class BenchmarkFlexer extends Application {
 
-    public static final boolean timeWaster = false;
+    public static final boolean timeWaster = true;
 
     public static void flex() {
         Benchmarks.initialize();
