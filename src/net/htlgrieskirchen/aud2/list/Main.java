@@ -24,8 +24,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        BenchmarkFlexer.flex();
-//        System.exit(0);
+        BenchmarkFlexer.flex();
+        System.exit(0);
 
         Timer timer;
         ArrayList<String> arrayList = new ArrayList<>();
