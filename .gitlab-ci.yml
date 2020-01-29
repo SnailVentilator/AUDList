@@ -5,8 +5,5 @@ executeTests:
   script:
   - gradle test
   artifacts:
-    paths:
-      - .
-    expire_in: 1d
     reports:
       junit: ./build/test-results/test/TEST-*.xml
