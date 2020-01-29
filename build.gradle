@@ -21,6 +21,7 @@ javafx {
 }
 
 sourceSets {
+    //noinspection GroovyAssignabilityCheck
     main {
         java {
             srcDirs = ["src"]

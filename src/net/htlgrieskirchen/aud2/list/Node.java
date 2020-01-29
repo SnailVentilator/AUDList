@@ -18,19 +18,17 @@ class Node<T> {
         this.value = value;
     }
 
-    public Node(Node<T> next, T element) {
+    public Node(Node<T> next, T value) {
         this.next = next;
-        this.value = element;
+        this.value = value;
     }
 
     public T getValue() {
         return value;
     }
 
-    public T setValue(T element) {
-        T old = element;
-        this.value = element;
-        return old;
+    public void setValue(T value) {
+        this.value = value;
     }
 
     public Node<T> getNext() {

@@ -38,10 +38,10 @@ public class BenchmarkFlexer extends Application {
         launch(new String[0]);
     }
 
-    private ProgressBar[][] progressBars = new ProgressBar[timeWaster ? 4 : 3][];
+    private final ProgressBar[][] progressBars = new ProgressBar[timeWaster ? 4 : 3][];
 
-    private Thread[] chartGenerationThreads = new Thread[4];
-    private AtomicInteger chartGenerationThreadsIndex = new AtomicInteger(0);
+    private final Thread[] chartGenerationThreads = new Thread[4];
+    private final AtomicInteger chartGenerationThreadsIndex = new AtomicInteger(0);
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -220,8 +220,8 @@ public class BenchmarkFlexer extends Application {
         return chart;
     }
 
-    private static long[][][] measures = new long[4][][];
-    private static AtomicInteger measuresCounter = new AtomicInteger();
+    private static final long[][][] measures = new long[4][][];
+    private static final AtomicInteger measuresCounter = new AtomicInteger();
 
     private long[][] measure(Benchmarkable benchmarkable, int stepSize, int count, int measuresCount, int benchmarkIndex) throws InterruptedException {
         final AtomicInteger iCounter = new AtomicInteger();
@@ -253,14 +253,14 @@ public class BenchmarkFlexer extends Application {
         return measures[measuresCount];
     }
 
-    public static interface Benchmarkable {
+    public interface Benchmarkable {
 
         long execute(ListType type, long size);
 
-        public String getTitle();
+        String getTitle();
     }
 
-    public static enum ListType {
+    public enum ListType {
         JavaArrayList, MyArrayList, JavaLinkedList, MyLinkedList
     }
 }

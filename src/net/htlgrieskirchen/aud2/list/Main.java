@@ -13,9 +13,10 @@ import java.util.Random;
  *
  * @author fabian
  */
+@SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "ManualArrayToCollectionCopy", "UseBulkOperation", "ResultOfMethodCallIgnored", "SameParameterValue"})
 public class Main {
 
-    private static Random random = new Random();
+    private static final Random random = new Random();
     private static final char[] CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
 
     private static String generateRandomString(int length) {
@@ -29,9 +30,9 @@ public class Main {
 
         Timer timer;
         ArrayList<String> arrayList = new ArrayList<>();
-        MyList<String> myList = new MyList();
+        MyList<String> myList = new MyList<>();
         LinkedList<String> linkedList = new LinkedList<>();
-        MyLinkedList<String> myLinkedList = new MyLinkedList();
+        MyLinkedList<String> myLinkedList = new MyLinkedList<>();
 
         String[] testStrings = new String[100000];
         for (int i = 0; i < testStrings.length; i++) {
