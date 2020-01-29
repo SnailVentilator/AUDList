@@ -5,7 +5,7 @@
  */
 package net.htlgrieskirchen.aud2.list;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -35,7 +35,7 @@ public class BenchmarkFlexer extends Application {
 
     public static void flex() {
         Benchmarks.initialize();
-        launch(new String[0]);
+        launch();
     }
 
     private final ProgressBar[][] progressBars = new ProgressBar[timeWaster ? 4 : 3][];
@@ -44,7 +44,7 @@ public class BenchmarkFlexer extends Application {
     private final AtomicInteger chartGenerationThreadsIndex = new AtomicInteger(0);
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         {
             VBox vbox = new VBox(5);
             vbox.setPadding(new Insets(15));
@@ -125,18 +125,10 @@ public class BenchmarkFlexer extends Application {
                     pane.add(chartRemoveByIndex, 0, 1);
                     pane.add(chartRemoveByValue, 1, 1);
 
-                    Collections.sort(chartInsert.getData(), (o1, o2) -> {
-                        return o1.getName().compareTo(o2.getName());
-                    });
-                    Collections.sort(chartContains.getData(), (o1, o2) -> {
-                        return o1.getName().compareTo(o2.getName());
-                    });
-                    Collections.sort(chartRemoveByIndex.getData(), (o1, o2) -> {
-                        return o1.getName().compareTo(o2.getName());
-                    });
-                    Collections.sort(chartRemoveByValue.getData(), (o1, o2) -> {
-                        return o1.getName().compareTo(o2.getName());
-                    });
+                    chartInsert.getData().sort(Comparator.comparing(XYChart.Series::getName));
+                    chartContains.getData().sort(Comparator.comparing(XYChart.Series::getName));
+                    chartRemoveByIndex.getData().sort(Comparator.comparing(XYChart.Series::getName));
+                    chartRemoveByValue.getData().sort(Comparator.comparing(XYChart.Series::getName));
                     
                     NumberAxis yAxis = (NumberAxis) chartInsert.getYAxis();
                     yAxis.setAutoRanging(false);
@@ -206,9 +198,7 @@ public class BenchmarkFlexer extends Application {
                         series.getData().add(new XYChart.Data<>(j * stepSize, localMeasures[x][j]));
                     }
 
-                    Platform.runLater(() -> {
-                        chart.getData().add(series);
-                    });
+                    Platform.runLater(() -> chart.getData().add(series));
                 }).start();
             }
         }) {
@@ -235,15 +225,11 @@ public class BenchmarkFlexer extends Application {
                 for (int j = 0; j < count; j++) {
                     if (j % 50 == 0) {
                         atomicJ.set(j);
-                        Platform.runLater(() -> {
-                            progressBars[iValue][benchmarkIndex].setProgress((double) atomicJ.get() / count);
-                        });
+                        Platform.runLater(() -> progressBars[iValue][benchmarkIndex].setProgress((double) atomicJ.get() / count));
                     }
                     measures[measuresCount][iValue][j] = benchmarkable.execute(ListType.values()[iValue], stepSize * j);
                 }
-                Platform.runLater(() -> {
-                    progressBars[iValue][benchmarkIndex].setProgress(1);
-                });
+                Platform.runLater(() -> progressBars[iValue][benchmarkIndex].setProgress(1));
             });
             threads[i].start();
         }

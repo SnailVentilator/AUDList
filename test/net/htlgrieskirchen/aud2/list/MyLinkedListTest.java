@@ -16,6 +16,7 @@ import org.junit.Test;
  *
  * @author aaigner18
  */
+@SuppressWarnings({"ConstantConditions", "MismatchedQueryAndUpdateOfCollection"})
 public class MyLinkedListTest {
 
     //TODO: Test case with 0 and non 0

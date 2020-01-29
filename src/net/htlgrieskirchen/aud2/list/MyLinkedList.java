@@ -72,7 +72,6 @@ public class MyLinkedList<T> {
             lastFoundNode = lastFoundNode.getNext();
             index++;
         }
-        assert lastFoundNode != null; //Shut up, Netbeans
         return lastFoundNode.getValue().equals(s) ? index : -1;
     }
 

@@ -16,6 +16,7 @@ import org.junit.Test;
  *
  * @author Andy
  */
+@SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
 public class MyListTest {
     List<String> jl;
     MyList<String> ml;

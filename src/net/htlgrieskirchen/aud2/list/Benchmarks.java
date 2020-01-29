@@ -21,6 +21,7 @@ public class Benchmarks {
         randomValues = generateRandomStrings(10000000);
     }
 
+    @SuppressWarnings("ManualArrayToCollectionCopy")
     public static class InsertionBenchmark implements BenchmarkFlexer.Benchmarkable {
 
         @Override
@@ -123,6 +124,7 @@ public class Benchmarks {
 
     }
 
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     public static class RemoveByIndexBenchmark implements BenchmarkFlexer.Benchmarkable {
 
         @Override
@@ -181,6 +183,7 @@ public class Benchmarks {
 
     }
 
+    @SuppressWarnings("ManualArrayToCollectionCopy")
     public static class RemoveByValueBenchmark implements BenchmarkFlexer.Benchmarkable {
 
         @Override

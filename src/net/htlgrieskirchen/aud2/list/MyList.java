@@ -11,6 +11,7 @@ import java.util.Objects;
  *
  * @author fabian
  */
+@SuppressWarnings("unchecked")
 public class MyList<T> {
 
     private static final int INITIAL_SIZE = 10;
