@@ -23,7 +23,7 @@ public class MyListTest {
     @Before
     public void before() {
         jl = new ArrayList<>();
-        ml = new MyList();
+        ml = new MyList<>();
         String listItem1 = "test1";
         String listItem2 = "test2";
         jl.add(listItem1);
@@ -76,7 +76,7 @@ public class MyListTest {
     @Test
     public void testContainsImplementEquals() {
         List<Custom> l1 = new ArrayList<>();
-        MyList<Custom> l2 = new MyList();
+        MyList<Custom> l2 = new MyList<>();
         Custom listItem1 = new Custom(187, "Brigitte");
         Custom listItem2 = new Custom(187, "Brigitte");
         l1.add(listItem1);
@@ -106,7 +106,7 @@ public class MyListTest {
     @Test
     public void testContainEmpty() {
         List<String> j1 = new ArrayList<>();
-        MyList<String> m1 = new MyList();
+        MyList<String> m1 = new MyList<>();
         String listItem1 = "test1";
 
         assertEquals(j1.contains(listItem1), m1.contains(listItem1));
@@ -122,7 +122,7 @@ public class MyListTest {
     @Test
     public void testAddNull() {
         List<String> j1 = new ArrayList<>();
-        MyList<String> m1 = new MyList();
+        MyList<String> m1 = new MyList<>();
         j1.add(null);
         m1.add(null);
 
@@ -131,7 +131,7 @@ public class MyListTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void testEmptyListGetMyList() {
-        MyList<String> m1 = new MyList();
+        MyList<String> m1 = new MyList<>();
         m1.get(0);
     }
 
@@ -143,7 +143,7 @@ public class MyListTest {
 
     @Test
     public void testIndexOfEmptyMyList() {
-        MyList<String> m1 = new MyList();
+        MyList<String> m1 = new MyList<>();
         assertEquals(-1, m1.indexOf("test"));
     }
 
