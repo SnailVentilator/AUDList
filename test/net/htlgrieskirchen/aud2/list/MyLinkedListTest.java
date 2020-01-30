@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author aaigner18
  */
-@SuppressWarnings({"ConstantConditions", "MismatchedQueryAndUpdateOfCollection"})
+@SuppressWarnings({"ConstantConditions", "MismatchedQueryAndUpdateOfCollection", "ResultOfMethodCallIgnored"})
 public class MyLinkedListTest {
 
 	//TODO: Test case with 0 and non 0
@@ -87,6 +87,7 @@ public class MyLinkedListTest {
 		assertEquals(jll.get(0), mll.get(0));
 	}
 
+	@Test
 	public void testRemove() {
 		String listItem1 = "test1";
 		jll.remove(listItem1);
@@ -112,6 +113,7 @@ public class MyLinkedListTest {
 	public void testContains() {
 		String listItem1 = "test1";
 		String listItem2 = "test2";
+		assertEquals(jll.contains(listItem1), mll.contains(listItem1));
 		assertEquals(jll.contains(listItem2), mll.contains(listItem2));
 	}
 
@@ -119,6 +121,7 @@ public class MyLinkedListTest {
 	public void testIndexOf() {
 		String listItem1 = "test1";
 		String listItem2 = "test2";
+		assertEquals(jll.indexOf(listItem1), mll.indexOf(listItem1));
 		assertEquals(jll.indexOf(listItem2), mll.indexOf(listItem2));
 	}
 

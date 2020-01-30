@@ -11,27 +11,11 @@ import java.util.Objects;
  * @author Andreas
  */
 public class Custom {
-	private int random;
-	private String name;
+	private final int random;
+	private final String name;
 
 	public Custom(int random, String name) {
 		this.random = random;
-		this.name = name;
-	}
-
-	public int getRandom() {
-		return random;
-	}
-
-	public void setRandom(int random) {
-		this.random = random;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
 		this.name = name;
 	}
 

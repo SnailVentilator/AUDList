@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author Andy
  */
-@SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+@SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "ConstantConditions", "ResultOfMethodCallIgnored"})
 public class MyListTest {
 	List<String> jl;
 	MyList<String> ml;
@@ -66,6 +66,7 @@ public class MyListTest {
 	public void testContains() {
 		String listItem1 = "test1";
 		String listItem2 = "test2";
+		assertEquals(jl.contains(listItem1), ml.contains(listItem1));
 		assertEquals(jl.contains(listItem2), ml.contains(listItem2));
 	}
 
@@ -89,6 +90,7 @@ public class MyListTest {
 	public void testIndexOf() {
 		String listItem1 = "test1";
 		String listItem2 = "test2";
+		assertEquals(jl.indexOf(listItem1), ml.indexOf(listItem1));
 		assertEquals(jl.indexOf(listItem2), ml.indexOf(listItem2));
 	}
 

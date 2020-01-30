@@ -31,7 +31,7 @@ public class Benchmarks {
 		return values;
 	}
 
-	@SuppressWarnings("ManualArrayToCollectionCopy")
+	@SuppressWarnings({"ManualArrayToCollectionCopy", "MismatchedQueryAndUpdateOfCollection"})
 	public static class InsertionBenchmark implements BenchmarkFlexer.Benchmarkable {
 
 		@Override
@@ -77,6 +77,7 @@ public class Benchmarks {
 
 	}
 
+	@SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "ResultOfMethodCallIgnored"})
 	public static class ContainsBenchmark implements BenchmarkFlexer.Benchmarkable {
 
 		private final ArrayList<String> javaArrayList = new ArrayList<>();
@@ -192,7 +193,7 @@ public class Benchmarks {
 
 	}
 
-	@SuppressWarnings("ManualArrayToCollectionCopy")
+	@SuppressWarnings({"ManualArrayToCollectionCopy", "MismatchedQueryAndUpdateOfCollection"})
 	public static class RemoveByValueBenchmark implements BenchmarkFlexer.Benchmarkable {
 
 		@Override
