@@ -256,11 +256,11 @@ public class Benchmarks {
 		private final long startingTime;
 
 		public Timer() {
-			this.startingTime = System.currentTimeMillis();
+			this.startingTime = System.nanoTime();
 		}
 
 		public long getTime() {
-			return System.currentTimeMillis() - startingTime;
+			return System.nanoTime() - startingTime;
 		}
 	}
 }

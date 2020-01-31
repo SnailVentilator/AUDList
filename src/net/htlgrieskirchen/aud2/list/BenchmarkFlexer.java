@@ -19,6 +19,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.Comparator;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -103,10 +104,10 @@ public class BenchmarkFlexer extends Application {
 			GridPane pane = new GridPane();
 
 			new Thread(() -> {
-				LineChart<Number, Number> chartInsert = generateChart(new Benchmarks.InsertionBenchmark(), 50000, 100, 0);
+				LineChart<Number, Number> chartInsert = generateChart(new Benchmarks.InsertionBenchmark(), 500, 1000, 0);
 				LineChart<Number, Number> chartContains = generateChart(new Benchmarks.ContainsBenchmark(250 * 100), 250, 100, 1);
-				LineChart<Number, Number> chartRemoveByIndex = generateChart(new Benchmarks.RemoveByIndexBenchmark(), 500, 100, 2);
-				LineChart<Number, Number> chartRemoveByValue = generateChart(new Benchmarks.RemoveByValueBenchmark(), 500, 100, 3);
+				LineChart<Number, Number> chartRemoveByIndex = generateChart(new Benchmarks.RemoveByIndexBenchmark(), 25, 1000, 2);
+				LineChart<Number, Number> chartRemoveByValue = generateChart(new Benchmarks.RemoveByValueBenchmark(), 25, 1000, 3);
 
 				for(Thread chartGenerationThread : chartGenerationThreads) {
 					try {
@@ -126,10 +127,6 @@ public class BenchmarkFlexer extends Application {
 					chartContains.getData().sort(Comparator.comparing(XYChart.Series::getName));
 					chartRemoveByIndex.getData().sort(Comparator.comparing(XYChart.Series::getName));
 					chartRemoveByValue.getData().sort(Comparator.comparing(XYChart.Series::getName));
-
-					NumberAxis yAxis = (NumberAxis) chartInsert.getYAxis();
-					yAxis.setAutoRanging(false);
-					yAxis.setUpperBound(250);
 
 					loadingStage.hide();
 					stage.show();
@@ -168,7 +165,7 @@ public class BenchmarkFlexer extends Application {
 		NumberAxis xAxis = new NumberAxis();
 		NumberAxis yAxis = new NumberAxis();
 		xAxis.setLabel("Number of Elements");
-		yAxis.setLabel("Time [ms]");
+		yAxis.setLabel("Time [ns]");
 
 		LineChart<Number, Number> chart = new LineChart<>(xAxis, yAxis);
 		chart.setTitle(benchmarkable.getTitle());
@@ -185,18 +182,19 @@ public class BenchmarkFlexer extends Application {
 
 			AtomicInteger integer = new AtomicInteger();
 			for(int i = 0; i < localMeasures.length - (timeWaster ? 0 : 1); i++) {
-				new Thread(() -> {
 					int x = integer.getAndIncrement();
 					XYChart.Series<Number, Number> series = new XYChart.Series<>();
 					series.setName(ListType.values()[x].toString());
 
-					for(int j = 0; j < localMeasures[x].length; j++) {
-						series.getData().add(new XYChart.Data<>(j * stepSize, localMeasures[x][j]));
+					for(long j = 0, previous = localMeasures[x][0]; j < localMeasures[x].length; j++) {
+						long yValue = localMeasures[x][(int) j];
+						if(yValue > 20000000 && yValue > previous * 2) continue;
+						series.getData().add(new XYChart.Data<>(j * stepSize, yValue));
+						previous = yValue;
 					}
 
 					Platform.runLater(() -> chart.getData().add(series));
-				}).start();
-			}
+				}
 		}) {
 			{
 				start();
@@ -214,6 +212,7 @@ public class BenchmarkFlexer extends Application {
 			threads[i] = new Thread(() -> {
 				int iValue = iCounter.getAndIncrement();
 				measures[measuresCount][iValue] = new long[count];
+
 				final AtomicInteger atomicJ = new AtomicInteger();
 				for(int j = 0; j < count; j++) {
 					if(j % 50 == 0) {
