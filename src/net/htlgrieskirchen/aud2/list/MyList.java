@@ -94,7 +94,7 @@ public class MyList<T> {
 	public int indexOf(T element) {
 		for(int i = 0; i < array.length; i++) {
 			T currentElement = (T) array[i];
-			if(currentElement == element) {
+			if(Objects.equals(currentElement, element)) {
 				return i;
 			}
 		}
