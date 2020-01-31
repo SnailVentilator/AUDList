@@ -113,9 +113,6 @@ public class MyLinkedList<T> {
 		}
 
 		remove(indexOf);
-
-		//Node<T> nthNode = getNthNode(indexOf - 1);
-		//nthNode.setNext(nthNode.getNext().getNext());
 		return true;
 	}
 
