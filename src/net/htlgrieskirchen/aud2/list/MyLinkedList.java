@@ -75,7 +75,6 @@ public class MyLinkedList<T> {
 	}
 
 	public T remove(int index) {
-		//TODO: handle lastNode
 		if(index == 0) {
 			T oldValue = firstNode.getValue();
 			firstNode = firstNode.getNext();
@@ -83,6 +82,9 @@ public class MyLinkedList<T> {
 		} else {
 			Node<T> nthNode = getNthNode(index - 1);
 			T oldValue = nthNode.getNext().getValue();
+			if(nthNode.getNext() == lastNode) {
+				lastNode = nthNode;
+			}
 			nthNode.setNext(nthNode.getNext().getNext());
 			return oldValue;
 		}
