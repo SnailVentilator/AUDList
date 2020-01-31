@@ -1,5 +1,7 @@
 # WELCOME to the HYPERLIST
 
+![LOGO](https://gitlab.com/snailventilator/audList/raw/master/img/cringeLogo.png)
+
 ## Revolutionary Java Lists
 We wanted to **revolutionize** list in java to get the best possible results using the new blockchain. 
 Our labs tried the best to test everything possible for errors and bugs so that **WE** can give you the best java experience.
