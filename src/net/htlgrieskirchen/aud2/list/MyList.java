@@ -71,6 +71,7 @@ public class MyList<T> {
 
 	public T remove(int index) {
 		System.arraycopy(array, index + 1, array, index, size - index);
+		size--;
 		return null;
 	}
 
