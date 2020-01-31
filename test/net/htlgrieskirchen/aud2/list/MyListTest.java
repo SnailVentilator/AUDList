@@ -57,6 +57,7 @@ public class MyListTest {
         jl.remove(0);
         ml.remove(0);
         assertEquals(jl.get(0), ml.get(0));
+        assertEquals(jl.size(), ml.size());
     }
 
     @Test
@@ -89,6 +90,7 @@ public class MyListTest {
     @Test
     public void testRemoveElement() {
         assertEquals(jl.remove("test1"), ml.remove("test1"));
+        assertEquals(jl.size(), ml.size());
     }
 
     @Test
@@ -96,6 +98,7 @@ public class MyListTest {
         String listItem1 = "test1";
         assertEquals(jl.remove(listItem1), ml.remove(listItem1));
         assertEquals(jl.get(0), ml.get(0));
+        assertEquals(jl.size(), ml.size());
     }
 
     @Test
@@ -104,6 +107,18 @@ public class MyListTest {
         String listItem2 = "test2";
         assertEquals(jl.indexOf(listItem1), ml.indexOf(listItem1));
         assertEquals(jl.indexOf(listItem2), ml.indexOf(listItem2));
+    }
+    
+    @Test
+    public void testIndexOfWithCustom() {
+        List<Custom> l1 = new ArrayList<>();
+        MyList<Custom> l2 = new MyList<>();
+        Custom listItem1 = new Custom(187, "Brigitte");
+        Custom listItem2 = new Custom(187, "Brigitte");
+        l1.add(listItem1);
+        l2.add(listItem2);
+        assertEquals(l1.indexOf(listItem1), l2.indexOf(listItem1));
+        assertEquals(l1.indexOf(listItem2), l2.indexOf(listItem2));
     }
 
     @Test

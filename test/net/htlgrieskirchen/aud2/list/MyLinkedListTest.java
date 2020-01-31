@@ -95,6 +95,7 @@ public class MyLinkedListTest {
         mll.add("temp2");
         assertEquals(jll.get(0), mll.get(0));
         assertEquals(jll.get(1), mll.get(1));
+        assertEquals(jll.size(), mll.size());
     }
 
     @Test
@@ -102,6 +103,7 @@ public class MyLinkedListTest {
         String listItem1 = "test1";
         assertEquals(jll.remove(listItem1), mll.remove(listItem1));
         assertEquals(jll.get(0), mll.get(0));
+        assertEquals(jll.size(), mll.size());
     }
 
     @Test
@@ -125,13 +127,25 @@ public class MyLinkedListTest {
         assertEquals(jll.contains(listItem1), mll.contains(listItem1));
         assertEquals(jll.contains(listItem2), mll.contains(listItem2));
     }
-
+    
     @Test
     public void testIndexOf() {
         String listItem1 = "test1";
         String listItem2 = "test2";
         assertEquals(jll.indexOf(listItem1), mll.indexOf(listItem1));
         assertEquals(jll.indexOf(listItem2), mll.indexOf(listItem2));
+    }
+    
+    @Test
+    public void testIndexOfWithCustom() {
+        List<Custom> l1 = new ArrayList<>();
+        MyList<Custom> l2 = new MyList<>();
+        Custom listItem1 = new Custom(187, "Brigitte");
+        Custom listItem2 = new Custom(187, "Brigitte");
+        l1.add(listItem1);
+        l2.add(listItem2);
+        assertEquals(l1.indexOf(listItem1), l2.indexOf(listItem1));
+        assertEquals(l1.indexOf(listItem2), l2.indexOf(listItem2));
     }
 
     @Test
@@ -147,6 +161,7 @@ public class MyLinkedListTest {
     @Test
     public void testRemoveElement() {
         assertEquals(jll.remove("test1"), mll.remove("test1"));
+        assertEquals(jll.size(), mll.size());
     }
 
     //Borderline Cases!
