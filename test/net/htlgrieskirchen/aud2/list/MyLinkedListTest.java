@@ -8,7 +8,6 @@ package net.htlgrieskirchen.aud2.list;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -74,7 +73,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testContainsImplementEquals() {
-        List<Custom> l1 = new ArrayList<>();
+        List<Custom> l1 = new LinkedList<>();
         MyLinkedList<Custom> l2 = new MyLinkedList<>();
         Custom listItem1 = new Custom(187, "Brigitte");
         Custom listItem2 = new Custom(187, "Brigitte");
@@ -138,8 +137,8 @@ public class MyLinkedListTest {
     
     @Test
     public void testIndexOfWithCustom() {
-        List<Custom> l1 = new ArrayList<>();
-        MyList<Custom> l2 = new MyList<>();
+        List<Custom> l1 = new LinkedList<>();
+        MyLinkedList<Custom> l2 = new MyLinkedList<>();
         Custom listItem1 = new Custom(187, "Brigitte");
         Custom listItem2 = new Custom(187, "Brigitte");
         l1.add(listItem1);
